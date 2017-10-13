@@ -35,7 +35,7 @@ public class Application {
         this.userRepository.save(user);
         return "hello";
     }
-
+//
     @RequestMapping("/list")
     public String list(Map<String, Object> map) {
         List<User> userList = new ArrayList<User>();
