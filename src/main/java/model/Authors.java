@@ -1,7 +1,13 @@
 package model;
 
+import javax.persistence.*;
 
+@Entity
+@Table(name = "authors")
 public class Authors {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    public int id;
     public  String name;
     public String surname;
     public String patronymic;
@@ -11,13 +17,14 @@ public class Authors {
 
     public Authors() {
     }
-    public Authors(String  name, String surname, String patronymic, String birthday, String deathday, String biography){
+    public Authors(String  name, String surname, String patronymic, String birthday, String deathday, String biography,int id){
         this.name=name;
         this.surname=surname;
         this.patronymic=patronymic;
         this.birthday=birthday;
         this.deathday=deathday;
         this.biography=biography;
+        this.id=id;
     }
 
     public String getName() {
@@ -66,5 +73,13 @@ public class Authors {
 
     public void setBirthday(String birthday) {
         this.birthday = birthday;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }

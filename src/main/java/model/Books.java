@@ -1,7 +1,13 @@
 package model;
 
+import javax.persistence.*;
 
+@Entity
+@Table(name = "books")
 public class Books {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    public int id;
     public String name;
     public String publicationDate;
     public String language;
@@ -11,12 +17,13 @@ public class Books {
     public Books() {
     }
 
-    public Books(String name, String publicationDate, String language, String country, int pages) {
+    public Books(String name, String publicationDate, String language, String country, int pages,int id) {
         this.name = name;
         this.publicationDate=publicationDate;
         this.language=language;
         this.country=country;
         this.pages=pages;
+        this.id=id;
     }
 
     public String getName() {
@@ -57,5 +64,13 @@ public class Books {
 
     public void setPages(int pages) {
         this.pages = pages;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }

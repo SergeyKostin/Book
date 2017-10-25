@@ -1,17 +1,24 @@
 package model;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "users")
 public class Users {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int id;
     public String name;
     public String surname;
     public String patronymic;
     public String birthday;
     public String login;
-    public String password;
+    public byte [] password;
     public String type;
 
     public Users() {
     }
-    public Users(String name, String surname, String patronymic, String birthday, String login, String password, String type) {
+    public Users(String name, String surname, String patronymic, String birthday, String login, byte [] password, String type,int id) {
         this.name=name;
         this.surname=surname;
         this.patronymic=patronymic;
@@ -19,6 +26,7 @@ public class Users {
         this.login=login;
         this.password=password;
         this.type=type;
+        this.id=id;
     }
 
     public String getName() {
@@ -61,11 +69,11 @@ public class Users {
         this.login = login;
     }
 
-    public String getPassword() {
+    public byte [] getPassword() {
         return password;
     }
 
-    public void setPassword(String password) {
+    public void setPassword(byte [] password) {
         this.password = password;
     }
 
@@ -75,5 +83,13 @@ public class Users {
 
     public void setType(String type) {
         this.type = type;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }
