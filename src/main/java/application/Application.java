@@ -19,7 +19,7 @@ public class Application {
     @Autowired
     UsersRepository usersRepository;
 
-private  Users users;
+
     public static void main(String [] args){
         SpringApplication.run(Application.class,args);
     }
@@ -34,10 +34,11 @@ private  Users users;
         return "bookList";
     }
     @RequestMapping("/signIn")
-    public String signIn(@RequestParam("login") String login, @RequestParam("psw") String psw){
+    public String signIn(Map<String, Object> map,@RequestParam("login") String login, @RequestParam("psw") String psw){
         System.out.print(login+psw);
-        Users users=this.usersRepository.findByLogin(login);
-        this.users=users;
+        byte [] password=psw.getBytes();
+        Users users=this.usersRepository.findByLoginAndPassword(login,password);
+        map.put("users",users);
         return "userProfile";
     }
 
@@ -102,7 +103,6 @@ private  Users users;
         users.setPassword(password);
         users.setBirthday(birthday_day+"."+birthday_Month+"."+birthday_Year);
         users.setCountry(country);
-        this.users=users;
         this.usersRepository.save(users);
         map.put("users", users);
         return "userProfile";
