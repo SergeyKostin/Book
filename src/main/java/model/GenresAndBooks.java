@@ -5,16 +5,16 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "genresAndBooks")
-public class Genres_and_Books {
+public class GenresAndBooks {
     private int idGenre;
     private int idBooks;
 
-    public Genres_and_Books(int idGenre,int idBooks) {
+    public GenresAndBooks(int idGenre,int idBooks) {
         this.idGenre = idGenre;
         this.idBooks=idBooks;
     }
 
-    public Genres_and_Books() {
+    public GenresAndBooks() {
     }
 
     public int getIdGenre() {

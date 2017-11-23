@@ -2,7 +2,6 @@ package application;
 
 import model.Authors;
 import model.Books;
-import model.Users;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -10,33 +9,46 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
 
 @Controller
 @SpringBootApplication
 public class Application {
+   /* @Autowired
+    UserRepository userRepository;*/
     @Autowired
-    UserRepository userRepository;
+    UsersRepository usersRepository;
 
+private  Users users;
     public static void main(String [] args){
         SpringApplication.run(Application.class,args);
     }
 
-    @RequestMapping("/hello")
+    @RequestMapping("/")
     public String hello(){
-        return "hello";
+        return "index";
     }
 
-    @RequestMapping("/add")
+    @RequestMapping("/getListBook")
+    public String getListBook(){
+        return "bookList";
+    }
+    @RequestMapping("/signIn")
+    public String signIn(@RequestParam("login") String login, @RequestParam("psw") String psw){
+        System.out.print(login+psw);
+        Users users=this.usersRepository.findByLogin(login);
+        this.users=users;
+        return "userProfile";
+    }
+
+   /* @RequestMapping("/add")
     public String add(@RequestParam("login") String login) {
-        User user = new User(login);
+        User user = new User(login, null);
         this.userRepository.save(user);
         return "hello";
-    }
-//
-    @RequestMapping("/list")
+    }*/
+
+    /*@RequestMapping("/list")
     public String list(Map<String, Object> map) {
         List<User> userList = new ArrayList<User>();
         for (User user : userRepository.findAll()) {
@@ -44,7 +56,7 @@ public class Application {
         }
         map.put("userList", userList);
         return "list";
-    }
+    }*/
     @RequestMapping("/createAuthor")
     public String createAuthor(){
         return "createAuthor";
@@ -80,15 +92,21 @@ public class Application {
         return "createAuthor";
     }
     @RequestMapping("/addUser")
-    public String addUser(@RequestParam("userName") String userName, @RequestParam("userSurname") String userSurname, @RequestParam("userPatronymic") String userPatronymic, @RequestParam("Birthday_day") String birthday_day,@RequestParam("Birthday_Month") String birthday_Month,@RequestParam("Birthday_Year") String birthday_Year, @RequestParam("login") String login,@RequestParam("psw") String psw,@RequestParam("psw_repeat") String psw_repeat){
+    public String addUser(Map<String, Object> map, @RequestParam("firstname") String userName, @RequestParam("country") String country, @RequestParam("lastname") String userSurname, @RequestParam("patronymic") String userPatronymic, @RequestParam("day") String birthday_day,@RequestParam("month") String birthday_Month,@RequestParam("year") String birthday_Year, @RequestParam("email") String login,@RequestParam("psw") String psw,@RequestParam("psw_repeat") String psw_repeat){
         Users users=new Users();
         users.setName(userName);
         users.setSurname(userSurname);
         users.setPatronymic(userPatronymic);
         users.setLogin(login);
-        users.setPassword(psw);
-        users.setBirthday(birthday_day+birthday_Month+birthday_Year);
-        return "hello";
+        byte[] password=psw.getBytes();
+        users.setPassword(password);
+        users.setBirthday(birthday_day+"."+birthday_Month+"."+birthday_Year);
+        users.setCountry(country);
+        this.users=users;
+        this.usersRepository.save(users);
+        map.put("users", users);
+        return "userProfile";
     }
+
 
 }

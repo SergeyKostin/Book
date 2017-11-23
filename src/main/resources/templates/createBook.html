@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html" />
+  <meta name="author" content="" />
+  <link rel="stylesheet" type="text/css" href="../public/css/mainStyle.css">
+  <link rel="stylesheet" type="text/css" href="../public/css/registration.css">
+  <script type="text/javascript" src="signIn.js"></script>
+</head>
+<body>
+  <div class="header">
+    <div class="logo">
+      <h1>book_search</h1>
+      <h2>easy way to find a favourite book</h2>
+    </div>
+    <div class="search">
+      <div class="registrationButtons">
+        <a href="#" onclick="document.getElementById('id01').style.display='block'">Sign in </></a>
+        <a href="#">Sign up</></a>
+      </div>
+      <form id="searchthis" action="/search" style="display:inline;" method="get">
+        <input id="search-box" name="q" size="40" type="text" placeholder="..." />
+        <input id="search-btn" value="Search" type="submit" />
+      </form>
+      <a href="#">Advanced search</></a>
+    </div>
+  </div>
+  <div class='navigation'>
+    <ul>
+      <li><a href="#"><span>Lists</span></a></li>
+      <li><a href="#"><span>Writers</span></a></li>
+      <li><a href="#"><span>Rewievs</span></a></li>
+      <li><a href="#"><span>Ratings</span></a></li>
+      <li><a href="#"><span>Info</span></a></li>
+    </ul>
+  </div>
+  <div class="main">
+    <form>
+      <div class="registration">
+        <h2>New book</h2>
+        <hr id="line">
+<label for="nameBook">Name:</label>
+        <input type="text" id="nameBook" name="nameBook" placeholder="Name..">
+        
+        <label for="country">Authors:</label>
+        <select name="Author" id="Author">
+          <option value="-1">Authors:</option>
+          <option value="Seregin">Seregin</option>
+          <option value="Korovich">Korovich</option>
+          <option value="Chinese">ghfghfgh</option>
+          <option value="Poland">gfhfghfgh</option>
+          <option value="German">Gerfghfghfghman</option>
+          <option value="French">gfhgfhgfh</option>
+        </select>
+
+        <!----- Date Of Birth -------------------------------------------------------->
+        <label>Publication date:</label>
+        <div class="publicationDate">
+          <div class="publicationDate_Day">
+            <select name="publicationDate_Day" id="publicationDate_Day">
+        		<option value="-1">Day:</option>
+        		<option value="1">1</option>
+        		<option value="2">2</option>
+        		<option value="3">3</option>
+	        </select>
+          </div>
+          <div class="publicationDate_Month">
+            <select id="publicationDate_Month" name="publicationDate_Month">
+        		<option value="-1">Month:</option>
+        		<option value="January">Jan</option>
+        		<option value="February">Feb</option>
+        		<option value="March">Mar</option>
+        		<option value="April">Apr</option>
+        		<option value="May">May</option>
+        		<option value="June">Jun</option>
+        		<option value="July">Jul</option>
+             </select>
+          </div>
+          <div class="publicationDate_Year">
+            <select name="publicationDate_Year" id="publicationDatey_Year">
+        		<option value="-1">Year:</option>
+        		<option value="2012">2012</option>
+        		<option value="2011">2011</option>
+        		<option value="2010">2010</option>
+        		<option value="2009">2009</option>
+               </select>
+          </div>
+        </div>
+        <label>Genres:</label>
+            <select name="genres" id="genres">
+              <option value="-1">Genres:</option>
+              <option value="English">England</option>
+              <option value="Russian">Russia</option>
+              <option value="Chinese">Chine</option>
+              <option value="Poland">Poland</option>
+              <option value="Germany">Germany</option>
+              <option value="French">French</option>
+            </select>
+            <label>Languages:</label>
+        		<select name="Language" id="Language">
+              <option value="-1">Language:</option>
+              <option value="English">English</option>
+              <option value="Russian">Russian</option>
+              <option value="Chinese">Chinese</option>
+              <option value="Poland">Poland</option>
+              <option value="German">German</option>
+              <option value="French">French</option>
+            </select>
+        	<label>Country:</label>
+          <select name="country" id="country">
+            <option value="-1">Country:</option>
+            <option value="English">England</option>
+            <option value="Russian">Russia</option>
+            <option value="Chinese">Chine</option>
+            <option value="Poland">Poland</option>
+            <option value="Germany">Germany</option>
+            <option value="French">French</option>
+          </select>
+          <label>Page:</label>
+          <input type="text" placeholder="Enter page count" name="page" required>
+                <div class="biographyField">
+          <label>Brief info:</label>
+          <form>
+            <textarea>Some text...</textarea>
+          </form>
+        </div>
+        <div class="SubmitButton">
+          <input type="submit" value="Submit">
+        </div>
+    </form>
+    </div>
+    </form>
+  </div>
+  <footer>
+    Made by Zufar inc
+  </footer>
+
+  <div id="id01" class="modal">
+      <form class="modal-content animate" action="/action_page.php">
+        <div class="imgcontainer">
+          <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+        </div>
+        <div class="container">
+          <h1 style="text-align: center">Sign in</h1>
+          <label><b>Username</b></label>
+          <input type="text" placeholder="Enter Username" name="uname" required>
+    
+          <label><b>Password</b></label>
+          <input type="password" placeholder="Enter Password" name="psw" required>
+            
+          <button type="submit">Login</button>
+          <input type="checkbox" checked="checked"> Remember me
+        </div>
+    
+        <div class="container" style="background-color:#f1f1f1">
+          <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+          <span class="psw">Forgot <a href="#">password?</a></span>
+        </div>
+      </form>
+    </div>
+
+</body>
+</html>

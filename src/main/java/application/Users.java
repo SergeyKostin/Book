@@ -1,4 +1,4 @@
-package model;
+package application;
 
 import javax.persistence.*;
 
@@ -15,10 +15,11 @@ public class Users {
     public String login;
     public byte [] password;
     public String type;
+    public String country;
 
     public Users() {
     }
-    public Users(String name, String surname, String patronymic, String birthday, String login, byte [] password, String type,int id) {
+    public Users(String name, String surname, String patronymic, String birthday, String login, byte [] password, String type,int id, String country) {
         this.name=name;
         this.surname=surname;
         this.patronymic=patronymic;
@@ -27,6 +28,7 @@ public class Users {
         this.password=password;
         this.type=type;
         this.id=id;
+        this.country=country;
     }
 
     public String getName() {
@@ -91,5 +93,13 @@ public class Users {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
     }
 }

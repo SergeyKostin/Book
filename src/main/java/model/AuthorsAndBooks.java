@@ -8,13 +8,13 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "authorsAndBooks")
-public class Authors_and_Books {
+public class AuthorsAndBooks {
     private int idAuthors;
     private int idBooks;
 
-    public Authors_and_Books() {
+    public AuthorsAndBooks() {
     }
-    public Authors_and_Books(int idAuthors,int idBooks) {
+    public AuthorsAndBooks(int idAuthors,int idBooks) {
         this.idAuthors=idAuthors;
         this.idBooks=idBooks;
     }
